@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { initialTheme } from "./theme";
 import { GlobalStyle } from "./globalStyles";
 import { Button } from "./components/Button/Button";
+import {PopUp, PopUpProvider} from "./components/PopUp/PopUp";
 
 function App() {
   const textAreaRef = useRef(null);
@@ -29,15 +30,18 @@ function App() {
   };
   return (
     <ThemeProvider theme={initialTheme}>
-      <div ref={mailRef}>
-        <GlobalStyle />
-        <HeaderSection />
-        <TitleSection />
-        {showElements && (
-          <Button onClick={() => buildClipboard()}>Copy MailPreview</Button>
-        )}
-        <textarea ref={textAreaRef} style={{ width: "0px", height: "0px" }} />
-      </div>
+      <PopUpProvider>
+        <div ref={mailRef}>
+          <GlobalStyle />
+          <HeaderSection />
+          <TitleSection />
+          <PopUp/>
+          {showElements && (
+            <Button onClick={() => buildClipboard()}>Copy MailPreview</Button>
+          )}
+          <textarea ref={textAreaRef} style={{ width: "0px", height: "0px" }} />
+        </div>
+      </PopUpProvider>
     </ThemeProvider>
   );
 }

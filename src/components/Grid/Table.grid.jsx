@@ -6,11 +6,12 @@ import includeDataProps from "../../includeDataProps";
 
 export const Grid = props => {
   const Table = styled.table`
-    width: 100%;
+    width: ${props.width};
+    position: relative;
   `;
   const TBody = styled.tbody``;
   return (
-    <Table>
+    <Table {...props}>
       {/* for the footer <div dangerouslySetInnerHTML={{__html: `
       {{ site_settings.company_name }}&nbsp;
       {{ site_settings.company_street_address_1 }}&nbsp;
@@ -24,7 +25,7 @@ export const Grid = props => {
     </Table>
   );
 };
-export const Row = styled.tr``;
+export const Row = (props) => <tr {...props}>{props.children}</tr>;
 export const Col = props => (
   <td
     {...includeDataProps(props)}

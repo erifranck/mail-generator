@@ -13,7 +13,7 @@ export const HeaderSection = withTheme(props => {
       height={"70px"}
       padding={"10px 70px"}
     >
-      <Grid>
+      <Grid width="100%">
         <Row>
           <Col>
             <Image
